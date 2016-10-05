@@ -1,3 +1,29 @@
-html {
-    background: #DDDDDD
+.btn-orange {
+    background-color: #F7941D;
+    color: white;
+}
+
+#splash {
+    margin-top:20px;
+    /*background-color: #64C5BF;*/
+    border-bottom: none;
+    color: #777;
+    text-align: center;
+}
+
+.joggerdiv {
+    position:relative;
+    height:374px;
+    margin-bottom: 10px;
+}
+
+#joggerimg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("../assets/jogger2.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
 }

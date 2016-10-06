@@ -27,3 +27,39 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.search {
+    margin-top: 20px;
+}
+
+.itemlist {
+    border-spacing:10px;
+}
+
+.productimage {
+    width:150px;
+    height: auto;
+}
+
+.filteroptions {
+    position:relative;
+    height:600px;
+    width: 70%;
+    border-radius: 6px;
+    background-color: #64C5BF;
+    padding: 10px;
+}
+
+.price {
+    width: 50px;
+}
+
+.searchpanel {
+    margin-top:60px;
+    height:600px
+}
+
+.searchrow {
+    clear:both;
+    display:block; 
+}

@@ -18,14 +18,14 @@
     </head>
     <body>
         <div class="container">
-            <div class="jumbotron search">
+            <div class="jumbotron container search">
                 <div class="filter col-md-4">
                     <div class="filterpanel">
                         <form action="#">
                             <input type="text" value="Narrow search" name="narrowtext">
                             <input type="submit" value="Go" class="btn btn-sm btn-orange">
                         </form>
-                        <p><a class="btn btn-sm btn-orange disabled" href="#" role="button">Compare # selected items</a></p>
+                        <p><a class="btn btn-sm btn-orange" href="compare.html" role="button">Compare # selected items</a></p>
                         <p><a class="btn btn-sm btn-orange" href="#" role="button">Reset Search</a></p>
                         <div class="filteroptions">
                             <div id="priceoption">
@@ -38,9 +38,20 @@
                             <div class="filteritem" id="ratingoption">
                                 <p>Rating</p>
                                 <form action="#">
-                                    <input type="checkbox"> ***<br>
-                                    <input type="checkbox"> ****<br>
-                                    <input type="checkbox"> *****<br>
+                                    <input type="checkbox"> <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <br>
+                                    <input type="checkbox"> <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <br>
+                                    <input type="checkbox"> <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span><br>
                                 </form>
                             </div>
                             <div class="filteritem" id="featuresoption">
@@ -63,7 +74,7 @@
                     </div>
                 </div>
                 <div class="searchpanel col-md-8">
-                    <div id="item1" class="searchrow">
+                    <div id="item1" class="searchrow row">
                         <div class="col-md-4">
                             <img class="productimage" src="http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/S/1/S1/42/S1-42-alu-gold-sport-cocoa-grid?wid=332&hei=392&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1472247759407">
                         </div>
@@ -75,14 +86,26 @@
                             iOS only
                         </div>
                         <div class="col-md-4">
-                            <a href="http://amazon.com">Amazon</a> **** <br>
-                            <a href="http://apple.com">Apple</a><br>
-                            <a href="http://walmart.com">Walmart</a> *****
+                            <div class="ratingsbox">
+                                <a href="http://amazon.com">Amazon</a> 
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span><br>
+                                <a href="http://apple.com">Apple</a><br>
+                                <a href="http://walmart.com">Walmart</a> <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </div>
+                            
                             <p><a class="btn btn-sm btn-orange" href="#" role="button">Add to compare</a></p>
                         </div>
                     </div>
                     <hr>
-                    <div id="item2" class="searchrow">
+                    <div id="item2" class="searchrow row">
                         <div class="col-md-4">
                             <img class="productimage" src="http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/S/1/S1/42/S1-42-alu-gold-sport-cocoa-grid?wid=332&hei=392&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1472247759407">
                         </div>
@@ -92,6 +115,22 @@
                             App notifications<br>
                             Wireless charging<br>
                             iOS only
+                        </div>
+                        <div class="col-md-4">
+                            <p><a class="btn btn-sm btn-orange" href="#" role="button">Add to compare</a></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="item3" class="searchrow row">
+                        <div class="col-md-4">
+                            <img class="productimage" src="http://s.tmocache.com/content/dam/tmo/en-p/internet-devices/samsung-gear-s2/dark-gray/stills/carousel-samsung-gear-s2-dark-gray-380x380-1.jpg">
+                        </div>
+                        <div class="col-md-4">
+                            <p>Samsung Gear S2</p>
+                            Tracks heart rate<br>
+                            App notifications<br>
+                            Wireless charging<br>
+                            Android/Tizen only
                         </div>
                         <div class="col-md-4">
                             <p><a class="btn btn-sm btn-orange" href="#" role="button">Add to compare</a></p>

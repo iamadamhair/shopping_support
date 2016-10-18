@@ -73,3 +73,12 @@
 .stardiv {
     
 }
+
+#featuretable {
+    text-align: center;
+}
+
+#imagetable { 
+    background-color:white;
+    border-radius: 6px;
+}

@@ -56,5 +56,33 @@
      "amazonprice":0,
      "manufacturerprice":0,
      "image":"http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/4/2/42/stainless/42-stainless-black-milanese-black-grid?wid=332&hei=392&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1472247763547"
+    },
+    {"name":"LEAF Urban", 
+     "manufacturer":"Bellabeat",
+     "position":"clip", 
+     "phoneos":["iOS","Android"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":false,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":false,
+         "wifi":true,
+         "gps":true,
+         "unique":""
+     },
+     "externalreview":"http://www.wareable.com/health-and-wellbeing/bellabeat-leaf-urban-review", 
+     "amazonreview":0, 
+     "amazonrating":0, 
+     "bbrating":0, 
+     "cnetrating":0,
+     "bbprice":0,
+     "amazonprice":0,
+     "manufacturerprice":0,     "image":"https://s3.graphiq.com/sites/default/files/2957/media/images/t2/_6920607.jpg"
     }
 ]}

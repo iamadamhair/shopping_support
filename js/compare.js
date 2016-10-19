@@ -1,7 +1,8 @@
 var itemTable = document.getElementById("imagetable");
 var featureTable = document.getElementById("featuretable");
 var itemData = {"items": [
-    {"name": "Apple Watch Series 2 (38mm)", 
+    {"itemid":1,
+     "name": "Apple Watch Series 2 (38mm)", 
      "manufacturer": "Apple",
      "position": "wrist", 
      "phoneos": "iOS",
@@ -30,7 +31,8 @@ var itemData = {"items": [
      "manufacturerprice":0,
      "image":"http://i-cdn.phonearena.com/images/articles/257191-gallery/BlackCool-Gray-Nike-Sport-Band-38-mm--369-42-mm--399.jpg"
     },
-    {"name":"Apple Watch Series 2 (42mm)", 
+    {"itemid":2,
+     "name":"Apple Watch Series 2 (42mm)", 
      "manufacturer":"Apple",
      "position":"wrist", 
      "phoneos":"iOS",
@@ -59,7 +61,8 @@ var itemData = {"items": [
      "manufacturerprice":0,
      "image":"http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/4/2/42/stainless/42-stainless-black-milanese-black-grid?wid=332&hei=392&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1472247763547"
     },
-    {"name":"LEAF Urban", 
+    {"itemid":3,
+     "name":"LEAF Urban", 
      "manufacturer":"Bellabeat",
      "position":"clip", 
      "phoneos":["iOS","Android"],
@@ -86,8 +89,133 @@ var itemData = {"items": [
      "bbprice":0,
      "amazonprice":0,
      "manufacturerprice":0,     "image":"https://s3.graphiq.com/sites/default/files/2957/media/images/t2/_6920607.jpg"
+    },
+    
+    {"itemid":4,
+     "name":"Charge 2",
+     "manufacturer":"Fitbit",
+     "position":"wrist",
+     "phoneos":["iOS","Android","Windows"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":false,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":true,
+         "gps":true,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/fitbit-charge-2/review/",
+     "amazonreview":"https://www.amazon.com/Fitbit-Charge-Heart-Fitness-Wristband/product-reviews/B01K9S24EM/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&pageNumber=1",
+     "amazonrating":4,
+     "bbrating":4,
+     "cnetrating":4,
+     "bbprice":149.95,
+     "amazonprice":149.95,
+     "manufacturerprice":0,
+     "image":"https://static1.fitbit.com/simple.b-cssdisabled-png.h68bb98f20781d0d17aed743cbeed0d83.pack?items=%2Fcontent%2Fassets%2Fpip%2Fimages%2Fproducts%2Flrn_black_3qtr.png"
+    },
+    
+    {"itemid":5,
+     "name":"Alta",
+     "manufacturer":"Fitbit",
+     "position":"wrist",
+     "phoneos":["iOS","Android","Windows"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":false,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":true,
+         "gps":true,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/fitbit-alta/",
+     "amazonreview":"https://www.amazon.com/Fitbit-Fitness-Tracker-Silver-Black/product-reviews/B01B25PKB0/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&pageNumber=1",
+     "amazonrating":4,
+     "bbrating":5,
+     "cnetrating":4,
+     "bbprice":129.95,
+     "amazonprice":129.86,
+     "manufacturerprice":0,
+     "image":"https://i5.walmartimages.com/asr/4dfe5616-edc3-4c7a-8dea-d5aad304e363_1.b3aa42987f0c28c43dd2bcf5d1acb500.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
+    },
+    
+    {"itemid":6,
+     "name":"Vivoactive HR",
+     "manufacturer":"Garmin",
+     "position":"wrist",
+     "phoneos":["iOS","Android","Windows"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":false,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":true,
+         "gps":true,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/garmin-vivoactive-hr-review/",
+     "amazonreview":"https://www.amazon.com/Garmin-v%C3%ADvoactive-Smart-Watch-Regular/product-reviews/B01BKUB6BA/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&pageNumber=1",
+     "amazonrating":4,
+     "bbrating":4,
+     "cnetrating":4,
+     "bbprice":249.99,
+     "amazonprice":249.99,
+     "manufacturerprice":0,
+     "image":"https://static.garmin.com/en/products/010-01605-03/g/all-heart.jpg"
+    },
+    
+    {"itemid":7,
+     "name":"Vivoactive HR+",
+     "manufacturer":"Garmin",
+     "position":"wrist",
+     "phoneos":["iOS","Android","Windows"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":false,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":true,
+         "gps":true,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/garmin-vivosmart-hr-plus/",
+     "amazonreview":"https://www.amazon.com/Garmin-v%C3%ADvosmart-Regular-Activity-Tracker/product-reviews/B01DOJDR4O/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&pageNumber=1",
+     "amazonrating":4,
+     "bbrating":4,
+     "cnetrating":0,
+     "bbprice":199.99,
+     "amazonprice":199.99,
+     "manufacturerprice":0,
+     "image":"https://static.garmincdn.com/en/products/010-01955-30/v/cf-lg.jpg"
     }
 ]};
+
 var featureTitles = {"fitnessmetrics":{
          "heartrate": "Heart Rate", 
          "calories": "Calorie Tracking",
@@ -107,6 +235,11 @@ var featureTitles = {"fitnessmetrics":{
 function buildTable() {
     'use strict';
     
+    var compareList = readCookie("items");
+    if (!compareList) {
+        return false;
+    }
+    compareList = compareList.split(',');
     var tbody = document.createElement("tbody"), tableRow = document.createElement("tr"), emptyCol = document.createElement("td");
     
     itemTable.appendChild(tbody);
@@ -116,11 +249,11 @@ function buildTable() {
     var thisItem = 0;
     
     // Add images. Need to decide how to transfer item ids from shopping
-    for (thisItem; thisItem < itemData.items.length; thisItem++) {
+    for (thisItem; thisItem < compareList.length; thisItem++) {
         var thisCol = document.createElement("td");
         var thisImage = document.createElement("img");
         
-        thisImage.src = itemData.items[thisItem].image;
+        thisImage.src = itemData.items[compareList[thisItem]-1].image;
         thisImage.className = "productimage";
         
         thisCol.appendChild(thisImage);
@@ -139,9 +272,9 @@ function buildTable() {
     featureTable.appendChild(tableBody);
     
     // Add names
-    for (thisItem = 0; thisItem < itemData.items.length; thisItem++) {
+    for (thisItem = 0; thisItem < compareList.length; thisItem++) {
         var itemName = document.createElement("th");
-        itemName.innerHTML = itemData.items[thisItem].name;
+        itemName.innerHTML = itemData.items[compareList[thisItem]-1].name;
         
         tableRow.appendChild(itemName);
     }
@@ -155,9 +288,9 @@ function buildTable() {
         rowHead.innerHTML = featureTitles.fitnessmetrics[compareFeatures[thisFeature]];
         thisRow.appendChild(rowHead);
         
-        for (thisItem = 0; thisItem < itemData.items.length; thisItem++) {
+        for (thisItem = 0; thisItem < compareList.length; thisItem++) {
             var itemFeature = document.createElement("td");
-            var featureBool = itemData.items[thisItem].fitnessmetrics[compareFeatures[thisFeature]];
+            var featureBool = itemData.items[compareList[thisItem]-1].fitnessmetrics[compareFeatures[thisFeature]];
             if (featureBool) {
                 itemFeature.innerHTML = "Yes";
             }
@@ -173,4 +306,24 @@ function buildTable() {
     
 }
 
-window.onload = buildTable;
+function loadCookies() {
+    var cookie = document.cookie.split(';');
+}
+
+function readCookie(name) {
+    var attributeName = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(attributeName) == 0) return c.substring(attributeName.length,c.length);
+    }
+    return null;
+}
+
+
+function setup() {
+    buildTable();
+}
+
+window.onload = setup;

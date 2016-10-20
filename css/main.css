@@ -50,6 +50,15 @@
     padding: 10px;
 }
 
+.upperbuttons {
+    position:relative;
+    width:70%;
+}
+
+.buttonholder {
+    text-align: center;
+}
+
 .price {
     width: 50px;
 }

@@ -25,14 +25,17 @@
                             <input type="text" value="Refine Search" name="narrowtext">
                             <input type="submit" value="Go" onclick="#" class="btn btn-sm btn-orange">
                         </form> Currently not supported-->
-                        <p><a class="btn btn-sm btn-orange" href="compare.html" id="comparebutton" role="button">Compare # selected items</a></p>
-                        <p><a class="btn btn-sm btn-orange" href="#" id="resetbutton" role="button">Reset Search</a></p>
+                        <div class="upperbuttons">
+                            <div class="buttonholder"><p><a class="btn btn-sm btn-orange" href="compare.html" id="comparebutton" role="button">Compare # selected items</a></p></div>
+                            <div class="buttonholder"><p><a class="btn btn-sm btn-orange" href="#" id="resetbutton" role="button">Reset Search</a></p></div>
+                        </div>
                         <div class="filteroptions">
+                            <div class="buttonholder"><p><a class="btn btn-sm btn-orange disabled" href="#" id="filterbutton" role="button">Filter</a></p></div>
                             <div id="priceoption">
                             <p>Price</p>
                                 <form action="#">
-                                    <input class="price" type="text" value="Min">
-                                    <input class="price" type="text" value="Max">
+                                    <input class="price" type="text" placeholder="Min">
+                                    <input class="price" type="text" placeholder="Max">
                                 </form>
                             </div>
                             <div class="filteritem" id="ratingoption">

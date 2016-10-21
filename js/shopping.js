@@ -217,6 +217,7 @@ var itemJSON = {"items": [
 var compareList = [];
 var compareButton = document.getElementById("comparebutton");
 var resetButton = document.getElementById("resetbutton");
+compareButton.onclick = function() {bakeCookie();};
 var allForms = document.forms;
 var formNames = ["priceform", "ratingform", "fitnessform", "featureform", "brandform"];
 

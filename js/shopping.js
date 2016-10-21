@@ -217,8 +217,8 @@ var itemJSON = {"items": [
 var compareList = [];
 var compareButton = document.getElementById("comparebutton");
 var resetButton = document.getElementById("resetbutton");
-
-compareButton.onclick = function() {bakeCookie();};
+var allForms = document.forms;
+var formNames = ["priceform", "ratingform", "fitnessform", "featureform", "brandform"];
 
 function buildList() {
     'use strict';
@@ -301,6 +301,10 @@ function buildList() {
         //$(itemJSON.items[thisItem].itemid + "button").click(function(){addToList(itemJSON.items[thisItem].itemid); return false;});
     }
 
+}
+
+function filterResults() {
+    
 }
 
 function addToList(itemID) {

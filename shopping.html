@@ -32,45 +32,63 @@
                         <div class="filteroptions">
                             <div class="buttonholder"><p><a class="btn btn-sm btn-orange disabled" href="#" id="filterbutton" role="button">Filter</a></p></div>
                             <div id="priceoption">
-                            <p>Price</p>
-                                <form action="#">
+                            <h4>Price</h4>
+                                <form action="#" name="priceform">
                                     <input class="price" type="text" placeholder="Min">
                                     <input class="price" type="text" placeholder="Max">
                                 </form>
                             </div>
                             <div class="filteritem" id="ratingoption">
-                                <p>Rating</p>
-                                <form action="#">
-                                    <input type="checkbox"> <span class="glyphicon glyphicon-star"></span>
+                                <h4>Rating</h4>
+                                <form action="#" name="ratingform">
+                                    <input type="checkbox" id="3star"> <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <br>
-                                    <input type="checkbox"> <span class="glyphicon glyphicon-star"></span>
+                                    <input type="checkbox" id="4star"> <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <br>
-                                    <input type="checkbox"> <span class="glyphicon glyphicon-star"></span>
+                                    <input type="checkbox" id="5star"> <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span><br>
                                 </form>
                             </div>
+                            <div class="filteritem" id="fitnessoption">
+                                <h4>Fitness Metrics</h4>
+                                <form action="#" name="fitnessform">
+                                    <input type="checkbox" id="heartrate"> Heart rate<br>
+                                    <input type="checkbox" id="calories"> Calories<br>
+                                    <input type="checkbox" id="steps"> Step counter<br>
+                                    <input type="checkbox" id="activity"> Activity<br>
+                                    <input type="checkbox" id="sleep"> Sleep<br>
+                                    <input type="checkbox" id="stairs"> Stairs
+                                </form>
+                            </div>
                             <div class="filteritem" id="featuresoption">
-                                <p>Features</p>
-                                <form action="#">
-                                    <input type="checkbox"> Heart rate<br>
-                                    <input type="checkbox"> Notifications<br>
-                                    <input type="checkbox"> Built-in wifi
+                                <h4>Features</h4>
+                                <form action="#" name="featureform">
+                                    <input type="checkbox" id="water"> Water resistant<br>
+                                    <input type="checkbox" id="notifications"> Notifications<br>
+                                    <input type="checkbox" id="wifi"> Built-in wifi<br>
+                                    <input type="checkbox" id="gps"> GPS
                                 </form>
                             </div>
                             <div class="filteritem" id="brandoption">
-                                <p>Brand</p>
-                                <form action="#">
-                                    <input type="checkbox"> Apple<br>
-                                    <input type="checkbox"> Garmin<br>
-                                    <input type="checkbox"> Samsung
+                                <h4>Brand</h4>
+                                <form action="#" name="brandform">
+                                    <input type="checkbox" name="apple"> Apple<br>
+                                    <input type="checkbox" id="bellabeat"> Bellabeat<br>
+                                    <input type="checkbox" id="fitbit"> Fitbit<br>
+                                    <input type="checkbox" id="garmin"> Garmin<br>
+                                    <input type="checkbox" id="jawbone"> Jawbone<br>
+                                    <input type="checkbox" id="misfit"> Misfit<br>
+                                    <input type="checkbox" id="moov"> Moov<br>
+                                    <input type="checkbox" id="samsung"> Samsung<br>
+                                    <input type="checkbox" id="xiaomi"> Xiaomi
                                 </form>
                             </div>
                         </div>

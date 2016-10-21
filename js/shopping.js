@@ -76,8 +76,8 @@ var itemJSON = {"items": [
      },
      "features":{
          "waterresistant":false,
-         "wifi":true,
-         "gps":true,
+         "wifi":false,
+         "gps":false,
          "unique":""
      },
      "externalreview":"http://www.wareable.com/health-and-wellbeing/bellabeat-leaf-urban-review", 
@@ -101,7 +101,7 @@ var itemJSON = {"items": [
          "steps":true,
          "activity":true,
          "sleep":false,
-         "stairs":false,
+         "stairs":true,
          "unique":""
      },
      "features":{
@@ -215,21 +215,43 @@ var itemJSON = {"items": [
     }
 ]};
 var compareList = [];
+var filterList = [];
 var compareButton = document.getElementById("comparebutton");
 var resetButton = document.getElementById("resetbutton");
 compareButton.onclick = function() {bakeCookie();};
 var allForms = document.forms;
 var formNames = ["priceform", "ratingform", "fitnessform", "featureform", "brandform"];
+var filterButton = document.getElementById("filterbutton");
+filterButton.onclick = function() {filterResults(); return false;};
+var heartrate = document.getElementById("heartrate"), calories = document.getElementById("calories"), steps = document.getElementById("steps"), activity = document.getElementById("activity"), sleep = document.getElementById("sleep"), stairs = document.getElementById("stairs"), waterresistant = document.getElementById("waterresistant"), notifications = document.getElementById("notifications"), wifi = document.getElementById("wifi"), gps = document.getElementById("gps"), apple = document.getElementById("apple"), bellabeat = document.getElementById("bellabeat"), fitbit = document.getElementById("fitbit"), garmin = document.getElementById("garmin"), jawbone = document.getElementById("jawbone"), misfit = document.getElementById("misfit"), moov = document.getElementById("moov"), samsung = document.getElementById("samsung"), xiaomi = document.getElementById("xiaomi");
+var priceform = document.getElementById("priceform"), ratingform = document.getElementById("ratingform"), fitnessform = document.getElementById("fitnessform"), featureform = document.getElementById("featureform"), brandform = document.getElementById("brandform");
 
-function buildList() {
+function buildList(itemstobuild) {
     'use strict';
     
-    var itemId = "item1", thisItem = 0;
-    
-    for (thisItem = 0; thisItem < itemJSON.items.length; thisItem++) {
+    if (itemstobuild.length == 0) {
         var hrItem = document.createElement("div");
         hrItem.className = "searchrow row";
-        hrItem.id = itemId;
+
+        var imageCol = document.createElement("div");
+        imageCol.className = "col-md-4";
+        hrItem.appendChild(imageCol);
+        var noResults = document.createElement("div");
+        noResults.className = "col-md-4";
+        noResults.innerHTML = "<p>No Results</p>"
+        hrItem.appendChild(noResults);  
+        hrItem.appendChild(imageCol);
+        itemlist.appendChild(hrItem);
+        return;
+    }
+        
+    
+    var thisItem = 0;
+    
+    for (thisItem = 0; thisItem < itemstobuild.length; thisItem++) {
+        var hrItem = document.createElement("div");
+        hrItem.className = "searchrow row";
+        hrItem.id = itemJSON.items[itemstobuild[thisItem]].itemid;
 
         var imageCol = document.createElement("div");
         imageCol.className = "col-md-4";
@@ -237,12 +259,12 @@ function buildList() {
 
         var productImg = document.createElement("img");
         productImg.className = "productimage";
-        productImg.src = itemJSON.items[thisItem].image;
+        productImg.src = itemJSON.items[itemstobuild[thisItem]].image;
         imageCol.appendChild(productImg);
 
         var productDesc = document.createElement("div");
         productDesc.className = "col-md-4";
-        productDesc.innerHTML = "<p>"+itemJSON.items[thisItem].name+"</p>";
+        productDesc.innerHTML = "<p>"+itemJSON.items[itemstobuild[thisItem]].name+"</p>";
         hrItem.appendChild(productDesc);
 
         var rightCol = document.createElement("div");
@@ -253,8 +275,8 @@ function buildList() {
         ratings.className = "ratingsbox";
         rightCol.appendChild(ratings);
 
-        var sites = ["http://amazon.com", "http://apple.com", "http://walmart.com"];
-        var siteNames = ["Amazon", "Apple", "Walmart"];
+        var sites = ["http://amazon.com", "http://apple.com", "http://bestbuy.com"];
+        var siteNames = ["Amazon", "Apple", "Best Buy"];
         var i, j;
 
         for (i = 0; i < sites.length; i++) {
@@ -290,7 +312,7 @@ function buildList() {
         button.role = "button";
         button.href = "#";
         button.onclick = function() {addToList(this.id); return false;};
-        button.id = itemJSON.items[thisItem].itemid + "button"
+        button.id = itemJSON.items[itemstobuild[thisItem]].itemid + "button"
         buttonP.appendChild(button);
         rightCol.appendChild(buttonP);
 
@@ -299,13 +321,75 @@ function buildList() {
         itemlist.appendChild(hrItem);
         itemlist.appendChild(endHr);
         
-        //$(itemJSON.items[thisItem].itemid + "button").click(function(){addToList(itemJSON.items[thisItem].itemid); return false;});
     }
 
 }
 
 function filterResults() {
+    while (itemlist.lastChild) {
+        itemlist.removeChild(itemlist.lastChild);
+    }
+    var itemstobuild = [0,1,2,3,4,5,6];
     
+    var thisFilter = 0, thisItem = 0, filter = "";
+    var brands = ["apple", "bellabeat", "fitbit", "garmin", "jawbone", "misfit", "moov", "samsung", "xiaomi"];
+    var fitness = ["heartrate", "calories", "steps", "activity", "sleep", "stairs"];
+    var features = ["waterresistant", "notifications", "wifi", "gps"];
+    
+    for (thisFilter; thisFilter < filterList.length; thisFilter++) {
+        filter = filterList[thisFilter];
+        
+        if (brands.indexOf(filter) >= 0) {
+            temp = searchItems("manufacturer", filter);
+        }
+        else if (fitness.indexOf(filter) >= 0) {
+            temp = searchItems("fitnessmetrics", filter);
+        }
+        else if (features.indexOf(filter) >= 0) {
+            temp = searchItems("features", filter);
+        }
+        itemstobuild = itemstobuild.filter(function(n) {
+            return temp.indexOf(n) != -1;
+        });
+    }
+    buildList(itemstobuild);
+}
+
+function searchItems(scope, keyword) {
+    var resultList = [];
+    
+    var thisItem = 0;
+    
+    if (scope == "manufacturer") {
+        for (thisItem; thisItem < itemJSON.items.length; thisItem++) {
+            if (itemJSON.items[thisItem].manufacturer.toLowerCase() == keyword) {
+                if (resultList.indexOf(thisItem) < 0) {
+                    resultList.push(thisItem);
+                }
+            }
+        }   
+    }
+    else if (scope == "fitnessmetrics") {
+        for (thisItem; thisItem < itemJSON.items.length; thisItem++) {
+            if (itemJSON.items[thisItem].fitnessmetrics[keyword]) {
+                if (resultList.indexOf(thisItem) < 0) {
+                    resultList.push(thisItem);
+                }
+            }
+        }
+    }
+    else if (scope == "features") {
+        for (thisItem; thisItem < itemJSON.items.length; thisItem++) {
+            if (itemJSON.items[thisItem].features[keyword]) {
+                if (resultList.indexOf(thisItem) < 0) {
+                    resultList.push(thisItem);
+                }
+            }
+        }
+    }
+    
+    
+    return resultList;
 }
 
 function addToList(itemID) {
@@ -341,18 +425,84 @@ function setButton() {
 
 function setup() {
     setButton();
-    buildList();
+    buildList([0,1,2,3,4,5,6]);
     resetButton.onclick = function() {resetSearch(); return false;};
+    configureFilters();
 }
 
 function resetSearch() {
     compareList = [];
+    filterList = [];
     setButton();
     var addCompareButtons = document.getElementsByClassName("addcompare"), i = 0;
     for (i; i<addCompareButtons.length; i++) {
         addCompareButtons[i].classList.remove("disabled");
     }
     burnCookies();
+    filterButton.classList.add("disabled");
+    configureFilters();
+    while (itemlist.lastChild) {
+        itemlist.removeChild(itemlist.lastChild);
+    }
+    buildList([0,1,2,3,4,5,6]);
+}
+
+function configureFilters() {
+    heartrate.checked = false;
+    calories.checked = false;
+    steps.checked = false;
+    activity.checked = false;
+    sleep.checked = false;
+    stairs.checked = false;
+    waterresistant.checked = false;
+    notifications.checked = false;
+    wifi.checked = false;
+    gps.checked = false;
+    apple.checked = false;
+    bellabeat.checked = false;
+    fitbit.checked = false;
+    garmin.checked = false;
+    jawbone.checked = false;
+    misfit.checked = false;
+    moov.checked = false;
+    samsung.checked = false;
+    xiaomi.checked = false;
+    
+    heartrate.onclick = function() {addFilter(this.id)};
+    calories.onclick = function() {addFilter(this.id)};
+    steps.onclick = function() {addFilter(this.id)};
+    activity.onclick = function() {addFilter(this.id)};
+    sleep.onclick = function() {addFilter(this.id)};
+    stairs.onclick = function() {addFilter(this.id)};
+    waterresistant.onclick = function() {addFilter(this.id)};
+    notifications.onclick = function() {addFilter(this.id)};
+    wifi.onclick = function() {addFilter(this.id)};
+    gps.onclick = function() {addFilter(this.id)};
+    apple.onclick = function() {addFilter(this.id)};
+    bellabeat.onclick = function() {addFilter(this.id)};
+    fitbit.onclick = function() {addFilter(this.id)};
+    garmin.onclick = function() {addFilter(this.id)};
+    jawbone.onclick = function() {addFilter(this.id)};
+    misfit.onclick = function() {addFilter(this.id)};
+    moov.onclick = function() {addFilter(this.id)};
+    samsung.onclick = function() {addFilter(this.id)};
+    xiaomi.onclick = function() {addFilter(this.id)};
+}
+
+function addFilter(filterName) {
+    if (filterList.indexOf(filterName) < 0) {
+        filterList.push(filterName);
+    }
+    else {
+        filterList.splice(filterList.indexOf(filterName),1);
+    }
+    if (filterList.length > 0) {
+        filterButton.classList.remove("disabled");
+    }
+    else {
+        filterButton.classList.add("disabled");
+    }
+    
 }
 
 window.onload = setup;

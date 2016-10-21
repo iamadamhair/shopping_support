@@ -223,7 +223,8 @@ var allForms = document.forms;
 var formNames = ["priceform", "ratingform", "fitnessform", "featureform", "brandform"];
 var filterButton = document.getElementById("filterbutton");
 filterButton.onclick = function() {filterResults(); return false;};
-var heartrate = document.getElementById("heartrate"), calories = document.getElementById("calories"), steps = document.getElementById("steps"), activity = document.getElementById("activity"), sleep = document.getElementById("sleep"), stairs = document.getElementById("stairs"), waterresistant = document.getElementById("waterresistant"), notifications = document.getElementById("notifications"), wifi = document.getElementById("wifi"), gps = document.getElementById("gps"), apple = document.getElementById("apple"), bellabeat = document.getElementById("bellabeat"), fitbit = document.getElementById("fitbit"), garmin = document.getElementById("garmin"), jawbone = document.getElementById("jawbone"), misfit = document.getElementById("misfit"), moov = document.getElementById("moov"), samsung = document.getElementById("samsung"), xiaomi = document.getElementById("xiaomi");
+var heartrate = document.getElementById("heartrate"), calories = document.getElementById("calories"), steps = document.getElementById("steps"), activity = document.getElementById("activity"), sleep = document.getElementById("sleep"), stairs = document.getElementById("stairs"), waterresistant = document.getElementById("waterresistant"), notifications = document.getElementById("notifications"), wifi = document.getElementById("wifi"), gps = document.getElementById("gps"), apple = document.getElementById("apple"), bellabeat = document.getElementById("bellabeat"), fitbit = document.getElementById("fitbit"), garmin = document.getElementById("garmin"), jawbone = document.getElementById("jawbone"), misfit = document.getElementById("misfit"), moov = document.getElementById("moov"), samsung = document.getElementById("samsung"), xiaomi = document.getElementById("xiaomi"), threestar = document.getElementById("3star"), fourstar = document.getElementById("4star"), fivestar = document.getElementById("5star");
+var minprice = document.getElementById("minprice"), maxprice = document.getElementById("maxprice");
 var priceform = document.getElementById("priceform"), ratingform = document.getElementById("ratingform"), fitnessform = document.getElementById("fitnessform"), featureform = document.getElementById("featureform"), brandform = document.getElementById("brandform");
 
 function buildList(itemstobuild) {
@@ -267,6 +268,10 @@ function buildList(itemstobuild) {
         productDesc.innerHTML = "<p>"+itemJSON.items[itemstobuild[thisItem]].name+"</p>";
         hrItem.appendChild(productDesc);
 
+        var manufacturer = document.createElement("h4");
+        manufacturer.innerHTML = itemJSON.items[itemstobuild[thisItem]].manufacturer;
+        productDesc.appendChild(manufacturer);
+        
         var rightCol = document.createElement("div");
         rightCol.className = "col-md-4";
         hrItem.appendChild(rightCol);
@@ -275,8 +280,10 @@ function buildList(itemstobuild) {
         ratings.className = "ratingsbox";
         rightCol.appendChild(ratings);
 
-        var sites = ["http://amazon.com", "http://apple.com", "http://bestbuy.com"];
-        var siteNames = ["Amazon", "Apple", "Best Buy"];
+        var sites = ["http://amazon.com", "http://bestbuy.com"];
+        var siteNames = ["Amazon", "Best Buy"];
+        var siteratings = ["amazonrating", "bbrating"];
+        var siteprices = ["amazonprice", "bbprice"];
         var i, j;
 
         for (i = 0; i < sites.length; i++) {
@@ -287,7 +294,7 @@ function buildList(itemstobuild) {
             ratings.appendChild(externalSite);
             externalSite.appendChild(siteLink);
 
-            var noStars = 4;
+            var noStars = itemJSON.items[itemstobuild[thisItem]][siteratings[i]];
 
             for (j = 0; j < noStars; j++) {
                 var star = document.createElement("span");
@@ -303,6 +310,15 @@ function buildList(itemstobuild) {
 
             var externalStoreBreak = document.createElement("br");    
             externalSite.appendChild(externalStoreBreak);
+            var price = document.createElement("p");
+            var money = itemJSON.items[itemstobuild[thisItem]][siteprices[i]];
+            if (money == 0) {
+                price.innerHTML = "NA";
+            }
+            else {
+                price.innerHTML = "$" + itemJSON.items[itemstobuild[thisItem]][siteprices[i]];
+            }
+            externalSite.appendChild(price);
         }
 
         var buttonP = document.createElement("p");
@@ -335,6 +351,8 @@ function filterResults() {
     var brands = ["apple", "bellabeat", "fitbit", "garmin", "jawbone", "misfit", "moov", "samsung", "xiaomi"];
     var fitness = ["heartrate", "calories", "steps", "activity", "sleep", "stairs"];
     var features = ["waterresistant", "notifications", "wifi", "gps"];
+    var ratings = ["3star", "4star", "5star"];
+    var priceboxes = ["minprice", "maxprice"];
     
     for (thisFilter; thisFilter < filterList.length; thisFilter++) {
         filter = filterList[thisFilter];
@@ -347,6 +365,12 @@ function filterResults() {
         }
         else if (features.indexOf(filter) >= 0) {
             temp = searchItems("features", filter);
+        }
+        else if (ratings.indexOf(filter) >= 0) {
+            temp = searchItems("ratings", filter);
+        }
+        else if (priceboxes.indexOf(filter) >= 0) {
+            temp = searchItems("prices", filter);
         }
         itemstobuild = itemstobuild.filter(function(n) {
             return temp.indexOf(n) != -1;
@@ -387,9 +411,56 @@ function searchItems(scope, keyword) {
             }
         }
     }
-    
+    else if (scope == "ratings") {
+        for (thisItem; thisItem < itemJSON.items.length; thisItem++) {
+            // Compare all ratings
+            var bbrating = itemJSON.items[thisItem].bbrating;
+            var amazonrating = itemJSON.items[thisItem].amazonrating;
+            var cnetrating = itemJSON.items[thisItem].cnetrating;
+            var minRating = nonZeroMin(bbrating, amazonrating, cnetrating);
+            if (minRating >= keyword[0]) {
+                if (resultList.indexOf(thisItem) < 0) {
+                    resultList.push(thisItem);
+                }
+            }
+        }
+    }
+    else if (scope == "prices") {
+        for (thisItem; thisItem < itemJSON.items.length; thisItem++) {
+            // Compare all ratings
+            var bbprice = itemJSON.items[thisItem].bbprice;
+            var amazonprice = itemJSON.items[thisItem].amazonprice;
+            var manufacturerprice = itemJSON.items[thisItem].manufacturerprice;
+            var minimumprice = nonZeroMin(bbprice, amazonprice, manufacturerprice);
+            var maximumprice = Math.max(bbprice, amazonprice, manufacturerprice);
+            if (keyword == "minprice") {
+                if (minprice.value < minimumprice) {
+                    if (resultList.indexOf(thisItem) < 0) {
+                        resultList.push(thisItem);
+                    } 
+                }
+            }
+            else {
+                if (maxprice.value > maximumprice) {
+                    if (resultList.indexOf(thisItem) < 0) {
+                        resultList.push(thisItem);
+                    } 
+                }
+            }
+        }
+    }
     
     return resultList;
+}
+
+function nonZeroMin() {
+    var args = Array.prototype.slice.call(arguments);
+    args.sort(function(a, b) {
+        if(a === null || isNaN(a) || a === 0) return 1;
+        if(b === null || isNaN(b) || b === 0) return -1
+        return a-b;
+    });
+    return args[0];
 }
 
 function addToList(itemID) {
@@ -467,7 +538,14 @@ function configureFilters() {
     moov.checked = false;
     samsung.checked = false;
     xiaomi.checked = false;
+    threestar.checked = false;
+    fourstar.checked = false;
+    fivestar.checked = false;
+    minprice.value = "";
+    maxprice.value = "";
     
+    minprice.oninput = function() {priceFilter(this.id)};
+    maxprice.oninput = function() {priceFilter(this.id)};
     heartrate.onclick = function() {addFilter(this.id)};
     calories.onclick = function() {addFilter(this.id)};
     steps.onclick = function() {addFilter(this.id)};
@@ -487,6 +565,43 @@ function configureFilters() {
     moov.onclick = function() {addFilter(this.id)};
     samsung.onclick = function() {addFilter(this.id)};
     xiaomi.onclick = function() {addFilter(this.id)};
+    threestar.onclick = function() {addFilter(this.id)};
+    fourstar.onclick = function() {addFilter(this.id)};
+    fivestar.onclick = function() {addFilter(this.id)};
+}
+
+function priceFilter(priceBox) {
+    if (priceBox == "minprice") {
+        if (minprice.value != null && minprice.value.trim() !="") {
+            if (filterList.indexOf(priceBox) < 0){
+                filterList.push(priceBox);
+            }
+        }
+        else {
+            if (filterList.indexOf(priceBox) >= 0){
+                filterList.splice(filterList.indexOf(priceBox),1);
+            }
+        }
+    }
+    else {
+        if (minprice.value != null && maxprice.value.trim() != "") {
+            if (filterList.indexOf(priceBox) < 0){
+                filterList.push(priceBox);
+            }
+        }
+        else {
+            if (filterList.indexOf(priceBox) >= 0){
+                filterList.splice(filterList.indexOf(priceBox),1);
+            }
+        }
+    }
+    
+    if (filterList.length > 0) {
+        filterButton.classList.remove("disabled");
+    }
+    else {
+        filterButton.classList.add("disabled");
+    }
 }
 
 function addFilter(filterName) {

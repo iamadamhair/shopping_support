@@ -13,7 +13,7 @@ var itemData = {"items": [
          "activity":true,
          "sleep":false,
          "stairs":false,
-         "unique":""
+         "unique":"Magical"
      },
      "features":{
          "waterresistant":true,
@@ -216,6 +216,12 @@ var itemData = {"items": [
     }
 ]};
 
+var dropdown = document.getElementById("featuredropdown");
+
+var shownFeatures = [0, 4, 5];
+
+var featureIndices = [0,1,2,3,4,5,6,7,8,9,10];
+var featureNames = ["heartrate","calories","steps","activity","sleep","stairs","unique","waterresistant","wifi","gps","unique"];
 var featureTitles = {"fitnessmetrics":{
          "heartrate": "Heart Rate", 
          "calories": "Calorie Tracking",
@@ -223,7 +229,7 @@ var featureTitles = {"fitnessmetrics":{
          "activity": "Activity Level",
          "sleep": "Sleep Monitoring",
          "stairs": "Stairs climbed",
-         "unique": "Unique Feature"
+         "unique": "Unique Fitness Feature"
      },
      "features":{
          "waterresistant": "Water Resistant",
@@ -231,6 +237,7 @@ var featureTitles = {"fitnessmetrics":{
          "gps": "GPS",
          "unique": "Unique Feature"
      }};
+
 
 function buildTable() {
     'use strict';
@@ -269,6 +276,7 @@ function buildTable() {
     featureTable.appendChild(tableHead);
     
     var tableBody = document.createElement("tbody");
+    tableBody.id = "comptablebody";
     featureTable.appendChild(tableBody);
     
     // Add names
@@ -310,6 +318,93 @@ function loadCookies() {
     var cookie = document.cookie.split(';');
 }
 
+function addRow(featureID) {
+    var compareList = readCookie("items");
+    if (!compareList) {
+        return false;
+    }
+    compareList = compareList.split(',');
+    
+    featureID = featureID.split("f");
+    featureID = featureID[0];
+    var tableBody = document.getElementById("comptablebody");
+
+    var thisRow = document.createElement("tr"), rowHead = document.createElement("th");
+    rowHead.scope = "row";
+    if (featureID < 7) {
+        rowHead.innerHTML = featureTitles.fitnessmetrics[featureNames[featureID]];  
+    }
+    else {
+        rowHead.innerHTML = featureTitles.features[featureNames[featureID]];
+    }
+    
+    thisRow.appendChild(rowHead);
+
+    for (thisItem = 0; thisItem < compareList.length; thisItem++) {
+        var itemFeature = document.createElement("td");
+        if (featureID < 7 && featureID != 6) {
+            var featureBool = itemData.items[compareList[thisItem]-1].fitnessmetrics[featureNames[featureID]];   
+        }
+        else if (featureID != 10) {
+            var featureBool = itemData.items[compareList[thisItem]-1].features[featureNames[featureID]];
+        }
+        if (featureID != 6 && featureID != 10) {
+            if (featureBool) {
+                itemFeature.innerHTML = "Yes";
+            }
+            else {
+                itemFeature.innerHTML = "No";
+            }   
+        }
+        else if (featureID == 6) {
+            itemFeature.innerHTML = itemData.items[compareList[thisItem]-1].fitnessmetrics["unique"];
+        }
+        else {
+            itemFeature.innerHTML = itemData.items[compareList[thisItem]-1].features["unique"];
+        }
+        
+
+        thisRow.appendChild(itemFeature);
+    }  
+    tableBody.appendChild(thisRow);
+    var oldChild = document.getElementById(featureID+"listitem");
+    dropdown.removeChild(oldChild);
+}
+
+function buildDropdown() {
+    var i = 0;
+    for (i; i < featureNames.length; i++) {
+        if (shownFeatures.indexOf(i) < 0) {
+            if (i < 7) {
+                var featureListItem = document.createElement("li");
+                featureListItem.id = i + "listitem";
+                var featureName = document.createElement("a");
+                featureName.href = "#";
+                featureName.id = i + "feature";
+                featureName.onclick = function() {addRow(this.id); return false;}
+                featureName.innerHTML = featureTitles.fitnessmetrics[featureNames[i]];
+
+                featureListItem.appendChild(featureName);
+                dropdown.appendChild(featureListItem);   
+            }
+            else {
+                var featureListItem = document.createElement("li");
+                featureListItem.id = i + "listitem";
+                var featureName = document.createElement("a");
+                featureName.href = "#";
+                featureName.id = i + "feature";
+                featureName.onclick = function() {addRow(this.id); return false;}
+                featureName.innerHTML = featureTitles.features[featureNames[i]];
+
+                featureListItem.appendChild(featureName);
+                dropdown.appendChild(featureListItem);   
+            } 
+        }
+        
+    }
+    
+}
+
 function readCookie(name) {
     var attributeName = name + "=";
     var ca = document.cookie.split(';');
@@ -324,6 +419,7 @@ function readCookie(name) {
 
 function setup() {
     buildTable();
+    buildDropdown();
 }
 
 window.onload = setup;

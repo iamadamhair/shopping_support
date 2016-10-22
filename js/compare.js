@@ -73,7 +73,7 @@ var itemData = {"items": [
          "activity":true,
          "sleep":true,
          "stairs":false,
-         "unique":"Monthly cycle tracking"
+         "unique":"Tracks menstrual cycle"
      },
      "features":{
          "waterresistant":false,

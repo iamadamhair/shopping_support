@@ -66,13 +66,13 @@ var itemJSON = {"items": [
      "position":"clip", 
      "phoneos":["iOS","Android"],
      "fitnessmetrics":{
-         "heartrate":true, 
+         "heartrate":false, 
          "calories":true,
          "steps":true,
          "activity":true,
-         "sleep":false,
+         "sleep":true,
          "stairs":false,
-         "unique":""
+         "unique":"Monthly cycle tracking"
      },
      "features":{
          "waterresistant":false,
@@ -100,14 +100,14 @@ var itemJSON = {"items": [
          "calories":true,
          "steps":true,
          "activity":true,
-         "sleep":false,
-         "stairs":true,
+         "sleep":true,
+         "stairs":false,
          "unique":""
      },
      "features":{
          "waterresistant":true,
-         "wifi":true,
-         "gps":true,
+         "wifi":false,
+         "gps":false,
          "unique":""
      },
      "externalreview":"https://www.cnet.com/products/fitbit-charge-2/review/",
@@ -131,14 +131,14 @@ var itemJSON = {"items": [
          "calories":true,
          "steps":true,
          "activity":true,
-         "sleep":false,
+         "sleep":true,
          "stairs":false,
          "unique":""
      },
      "features":{
          "waterresistant":true,
-         "wifi":true,
-         "gps":true,
+         "wifi":false,
+         "gps":false,
          "unique":""
      },
      "externalreview":"https://www.cnet.com/products/fitbit-alta/",
@@ -163,12 +163,12 @@ var itemJSON = {"items": [
          "steps":true,
          "activity":true,
          "sleep":false,
-         "stairs":false,
+         "stairs":true,
          "unique":""
      },
      "features":{
          "waterresistant":true,
-         "wifi":true,
+         "wifi":false,
          "gps":true,
          "unique":""
      },
@@ -194,12 +194,12 @@ var itemJSON = {"items": [
          "steps":true,
          "activity":true,
          "sleep":false,
-         "stairs":false,
+         "stairs":true,
          "unique":""
      },
      "features":{
          "waterresistant":true,
-         "wifi":true,
+         "wifi":false,
          "gps":true,
          "unique":""
      },
@@ -212,6 +212,161 @@ var itemJSON = {"items": [
      "amazonprice":199.99,
      "manufacturerprice":0,
      "image":"https://static.garmincdn.com/en/products/010-01955-30/v/cf-lg.jpg"
+    },
+    
+    {"itemid":8,
+     "name":"UP3",
+     "manufacturer":"Jawbone",
+     "position":"wrist",
+     "phoneos":["iOS","Android","Windows"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":true,
+         "stairs":true,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":false,
+         "gps":false,
+         "unique":"Wireless sync"
+     },
+     "externalreview":"https://www.cnet.com/products/jawbone-up3/review/",
+     "amazonreview":"",
+     "amazonrating":3,
+     "bbrating":0,
+     "cnetrating":3,
+     "bbprice":0,
+     "amazonprice":58.25,
+     "manufacturerprice":0,
+     "image":"https://s3.amazonaws.com/Inspiration-Images/wearable_gear_images/photos/000/000/112/large/up3.jpg?1433360116"
+    },
+    
+    {"itemid":9,
+     "name":"Ray",
+     "manufacturer":"Misfit",
+     "position":"wrist",
+     "phoneos":["iOS","Android","Windows"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":true,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":false,
+         "gps":false,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/misfit-ray-review/",
+     "amazonreview":"",
+     "amazonrating":3,
+     "bbrating":4,
+     "cnetrating":3,
+     "bbprice":99.99,
+     "amazonprice":99.99,
+     "manufacturerprice":0,
+     "image":"https://s3.amazonaws.com/Inspiration-Images/wearable_gear_images/photos/000/000/447/large/misfit_ray.jpg?1460676426"
+    },
+    
+    {"itemid":10,
+     "name":"Fit2",
+     "manufacturer":"Samsung",
+     "position":"wrist",
+     "phoneos":["iOS","Android"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":true,
+         "stairs":true,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":false,
+         "gps":true,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/samsung-gear-fit-2/",
+     "amazonreview":"",
+     "amazonrating":4,
+     "bbrating":4,
+     "cnetrating":3,
+     "bbprice":149.99,
+     "amazonprice":149.00,
+     "manufacturerprice":0,
+     "image":"https://i5.walmartimages.com/asr/7a6f11d6-2998-4c5e-a15e-b65cb540653b_1.aed97f8b8089b8457c61202b0f76d09f.jpeg"
+    },
+    
+    {"itemid":11,
+     "name":"Now",
+     "manufacturer":"Moov",
+     "position":"clip",
+     "phoneos":["iOS","Android"],
+     "fitnessmetrics":{
+         "heartrate":false, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":false,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":true,
+         "wifi":false,
+         "gps":false,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/samsung-gear-fit-2/",
+     "amazonreview":"",
+     "amazonrating":4,
+     "bbrating":4,
+     "cnetrating":3,
+     "bbprice":59.99,
+     "amazonprice":59.00,
+     "manufacturerprice":0,
+     "image":"http://media.apcmag.com/wp-content/uploads/sites/20/2016/02/moovnow_aquablue_isometric.jpg"
+    },
+    
+    {"itemid":12,
+     "name":"Mi Band Pulse",
+     "manufacturer":"Xiaomi",
+     "position":"clip",
+     "phoneos":["iOS","Android"],
+     "fitnessmetrics":{
+         "heartrate":true, 
+         "calories":true,
+         "steps":true,
+         "activity":true,
+         "sleep":true,
+         "stairs":false,
+         "unique":""
+     },
+     "features":{
+         "waterresistant":false,
+         "wifi":false,
+         "gps":false,
+         "unique":""
+     },
+     "externalreview":"https://www.cnet.com/products/samsung-gear-fit-2/",
+     "amazonreview":"",
+     "amazonrating":3,
+     "bbrating":0,
+     "cnetrating":0,
+     "bbprice":0,
+     "amazonprice":21.99,
+     "manufacturerprice":0,
+     "image":"http://xiaomi-mi.com/uploads/CatalogueImage/Mi_Band_Pulse3_14411_1447167856_13941_1447317794.jpg"
     }
 ]};
 var compareList = [];
@@ -345,7 +500,7 @@ function filterResults() {
     while (itemlist.lastChild) {
         itemlist.removeChild(itemlist.lastChild);
     }
-    var itemstobuild = [0,1,2,3,4,5,6];
+    var itemstobuild = [0,1,2,3,4,5,6,7,8,9,10,11];
     
     var thisFilter = 0, thisItem = 0, filter = "";
     var brands = ["apple", "bellabeat", "fitbit", "garmin", "jawbone", "misfit", "moov", "samsung", "xiaomi"];
@@ -496,7 +651,7 @@ function setButton() {
 
 function setup() {
     setButton();
-    buildList([0,1,2,3,4,5,6]);
+    buildList([0,1,2,3,4,5,6,7,8,9,10,11]);
     resetButton.onclick = function() {resetSearch(); return false;};
     configureFilters();
 }
@@ -515,7 +670,7 @@ function resetSearch() {
     while (itemlist.lastChild) {
         itemlist.removeChild(itemlist.lastChild);
     }
-    buildList([0,1,2,3,4,5,6]);
+    buildList([0,1,2,3,4,5,6,7,8,9,10,11]);
 }
 
 function configureFilters() {
